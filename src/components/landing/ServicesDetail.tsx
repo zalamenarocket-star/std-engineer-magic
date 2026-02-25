@@ -5,25 +5,26 @@ import { Flame, Container, PipetteIcon } from "lucide-react";
 const services = [
   {
     icon: Flame,
-    tag: "OBRIGATÓRIO POR LEI",
+    tag: "NR-13",
     title: "Inspeção de Caldeiras",
-    desc: "Inspecionar caldeiras periodicamente garante maior economia, máxima eficiência do equipamento e minimização de riscos operacionais.",
+    desc: "Inspeção de segurança inicial, periódica e extraordinária, garantindo a integridade e conformidade dos equipamentos conforme normas vigentes.",
   },
   {
     icon: Container,
-    tag: "EVITE INTERDIÇÕES",
+    tag: "NR-13",
     title: "Inspeção de Vasos de Pressão",
-    desc: "Inspeção de segurança abordando aspectos técnicos, de segurança e operacionais de cada equipamento conforme NR-13.",
+    desc: "Abordamos aspectos técnicos, de segurança e operacionais de cada equipamento, assegurando plena conformidade com a NR-13.",
   },
   {
     icon: PipetteIcon,
-    tag: "EXIGIDO PELO MTE",
+    tag: "NR-13",
     title: "Inspeção de Tubulações",
-    desc: "Tubulações interligadas a vasos de pressão ou caldeiras contendo fluídos classe A ou B devem ser inspecionadas periodicamente.",
+    desc: "Tubulações interligadas a vasos de pressão ou caldeiras contendo fluidos classe A ou B são inspecionadas com equipamentos de última geração.",
   },
 ];
 
-const whatsappLink = "https://api.whatsapp.com/send?phone=5511916930415&text=Olá! Gostaria de saber mais sobre os serviços da STD Engenharia.";
+const whatsappLink =
+  "https://api.whatsapp.com/send?phone=5511916930415&text=Olá! Gostaria de agendar uma inspeção com a STD Engenharia.";
 
 const ServicesDetail = () => (
   <section className="py-20 bg-navy">
@@ -58,7 +59,7 @@ const ServicesDetail = () => (
             <p className="text-primary-foreground/70 text-sm mb-6 leading-relaxed">{desc}</p>
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading font-bold text-sm uppercase">
-                Agendar Inspeção
+                Agende sua Inspeção Agora
               </Button>
             </a>
           </motion.div>
