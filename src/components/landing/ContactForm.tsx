@@ -34,11 +34,8 @@ const ContactForm = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <span className="text-xs font-heading font-bold text-primary uppercase tracking-widest">
-            Resposta em até 4 horas
-          </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mt-2 mb-4">
-            Agende uma Consultoria Gratuita
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
+            Agende uma Consultoria
           </h2>
           <p className="text-primary-foreground/70">
             Preencha o formulário e fale com um engenheiro especialista:
@@ -65,17 +62,22 @@ const ContactForm = () => {
             className="flex h-10 w-full rounded-md border border-secondary/30 bg-navy px-3 py-2 text-sm text-primary-foreground/80 placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-ring"
           >
             <option value="">Serviço de Interesse *</option>
-            <option>Inspeção NR-13</option>
-            <option>Ensaio Não Destrutivo</option>
-            <option>Inspeção em Tanques</option>
-            <option>Inspeção em Tubulações</option>
-            <option>Inspeção em Ganchos</option>
+             <option>Inspeção NR-13</option>
+             <option>Inspeção de Caldeiras</option>
+             <option>Inspeção de Vasos de Pressão</option>
+             <option>Inspeção em Tanques</option>
+             <option>Inspeção em Tubulações</option>
+             <option>Calibração de Válvulas e Manômetros</option>
+             <option>Ensaio Não Destrutivo</option>
+             <option>Inspeção em Ganchos</option>
+             <option>Offshore</option>
+             <option>Outros</option>
             <option>Offshore</option>
             <option>Outros</option>
           </select>
           <Textarea placeholder="Mensagem" value={formData.message} onChange={update("message")} className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/40 min-h-[100px]" />
           <Button type="submit" size="lg" className="w-full font-heading font-bold uppercase tracking-wide text-base">
-            Agende uma Consultoria Gratuita
+            Agende uma Consultoria
           </Button>
 
           <div className="flex justify-center gap-8 pt-4">

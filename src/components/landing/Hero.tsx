@@ -28,22 +28,22 @@ const Hero = () => (
           </span>
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-primary-foreground leading-[1.1] mb-6">
-          Experiência e Inovação a Serviço da Sua{" "}
-          <span className="text-gradient">Segurança</span>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary-foreground leading-[1.1] mb-6">
+          Inspeção em Vasos de Pressão conforme{" "}
+          <span className="text-gradient">NR-13</span>
         </h1>
 
         <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed max-w-xl">
-          A STD Engenharia atua com soluções especializadas em inspeções técnicas,
-          garantindo conformidade, precisão e confiança em cada projeto, atendendo
-          aos níveis mais elevados de exigência.
+          A STD Engenharia atua com soluções especializadas em inspeções técnicas
+          de caldeiras, vasos de pressão e tubulações, garantindo conformidade,
+          precisão e confiança em cada projeto.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row gap-3 mb-12">
           <a href="#formulario">
             <Button
               size="lg"
-              className="font-heading font-bold uppercase tracking-wide text-base px-8 animate-pulse-glow"
+              className="font-heading font-bold uppercase tracking-wide text-sm px-6 animate-pulse-glow w-full sm:w-auto"
             >
               Agende sua Inspeção Agora
             </Button>
@@ -52,9 +52,9 @@ const Hero = () => (
             <Button
               size="lg"
               variant="outline"
-              className="font-heading font-bold uppercase tracking-wide text-base px-8 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="font-heading font-bold uppercase tracking-wide text-sm px-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
             >
-              Fale com um Engenheiro Especialista
+              Fale com um Especialista
             </Button>
           </a>
         </div>
@@ -62,7 +62,7 @@ const Hero = () => (
         <div className="flex flex-wrap gap-8">
           {[
             { icon: Shield, value: "NR-13", label: "Conformidade Total" },
-            { icon: Award, value: "+29 anos", label: "de Experiência" },
+            { icon: Award, value: "Desde 1996", label: "Referência no Mercado" },
             { icon: Globe, value: "Brasil e Exterior", label: "Atuação Global" },
           ].map(({ icon: Icon, value, label }) => (
             <div key={value} className="flex items-center gap-3">
