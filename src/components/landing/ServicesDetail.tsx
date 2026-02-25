@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Flame, Container, PipetteIcon } from "lucide-react";
 
+import { Gauge } from "lucide-react";
+
 const services = [
   {
     icon: Flame,
@@ -18,8 +20,14 @@ const services = [
   {
     icon: PipetteIcon,
     tag: "NR-13",
-    title: "Inspeção de Tubulações",
-    desc: "Tubulações interligadas a vasos de pressão ou caldeiras contendo fluidos classe A ou B são inspecionadas com equipamentos de última geração.",
+    title: "Inspeção de Tubulações e Tanques",
+    desc: "Tubulações e tanques interligados a vasos de pressão ou caldeiras contendo fluidos classe A ou B são inspecionados com equipamentos de última geração.",
+  },
+  {
+    icon: Gauge,
+    tag: "NR-13",
+    title: "Calibração de Válvulas e Manômetros",
+    desc: "Calibração e teste de válvulas de segurança e manômetros, assegurando o correto funcionamento dos dispositivos de proteção dos equipamentos.",
   },
 ];
 
@@ -41,7 +49,7 @@ const ServicesDetail = () => (
         <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {services.map(({ icon: Icon, tag, title, desc }, i) => (
           <motion.div
             key={title}

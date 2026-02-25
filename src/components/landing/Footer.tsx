@@ -4,8 +4,11 @@ const Footer = () => (
       <p className="font-heading font-bold text-primary-foreground text-lg mb-1">
         STD <span className="text-primary">Engenharia</span>
       </p>
-      <p className="text-primary-foreground/50 text-sm mb-4">
+      <p className="text-primary-foreground/50 text-sm mb-2">
         Padrão em Qualidade desde 1996
+      </p>
+      <p className="text-primary-foreground/40 text-xs mb-4">
+        Inspeção NR-13 · Caldeiras · Vasos de Pressão · Tubulações · Tanques · Calibração de Válvulas e Manômetros
       </p>
       <p className="text-primary-foreground/40 text-xs">
         © {new Date().getFullYear()} STD Standard Engenharia. Todos os direitos reservados.
