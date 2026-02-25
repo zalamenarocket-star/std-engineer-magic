@@ -38,7 +38,7 @@ const ContactForm = () => {
             Resposta em até 4 horas
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mt-2 mb-4">
-            Solicite uma Consultoria Gratuita
+            Agende uma Consultoria Gratuita
           </h2>
           <p className="text-primary-foreground/70">
             Preencha o formulário e fale com um engenheiro especialista:
@@ -75,7 +75,7 @@ const ContactForm = () => {
           </select>
           <Textarea placeholder="Mensagem" value={formData.message} onChange={update("message")} className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/40 min-h-[100px]" />
           <Button type="submit" size="lg" className="w-full font-heading font-bold uppercase tracking-wide text-base">
-            Solicitar Consultoria Gratuita
+            Agende uma Consultoria Gratuita
           </Button>
 
           <div className="flex justify-center gap-8 pt-4">

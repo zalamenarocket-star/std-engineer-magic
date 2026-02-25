@@ -8,6 +8,7 @@ import ServicesDetail from "@/components/landing/ServicesDetail";
 import FAQ from "@/components/landing/FAQ";
 import ContactForm from "@/components/landing/ContactForm";
 import Footer from "@/components/landing/Footer";
+import FloatingWhatsApp from "@/components/landing/FloatingWhatsApp";
 
 const Index = () => (
   <div className="min-h-screen">
@@ -21,6 +22,7 @@ const Index = () => (
     <FAQ />
     <ContactForm />
     <Footer />
+    <FloatingWhatsApp />
   </div>
 );
 
