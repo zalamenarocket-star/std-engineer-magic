@@ -3,26 +3,36 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Shield, Clock, Headphones } from "lucide-react";
+import { Shield, Clock, Headphones, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "", company: "", email: "", phone: "", service: "", message: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
-    // Send email via mailto as fallback
-    const subject = encodeURIComponent(`Contato STD Engenharia - ${formData.service}`);
-    const body = encodeURIComponent(
-      `Nome: ${formData.name}\nEmpresa: ${formData.company}\nE-mail: ${formData.email}\nTelefone: ${formData.phone}\nServiço: ${formData.service}\nMensagem: ${formData.message}`
-    );
-    window.open(`mailto:zalamenarocket@gmail.com?subject=${subject}&body=${body}`, "_self");
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact', {
+        body: formData,
+      });
 
-    toast({ title: "Formulário enviado!", description: "Entraremos em contato em breve." });
+      if (error) throw error;
+
+      toast({ title: "Formulário enviado com sucesso!", description: "Entraremos em contato em breve." });
+      setFormData({ name: "", company: "", email: "", phone: "", service: "", message: "" });
+    } catch (err) {
+      console.error('Erro ao enviar:', err);
+      toast({ title: "Erro ao enviar", description: "Tente novamente ou entre em contato pelo WhatsApp.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -77,8 +87,8 @@ const ContactForm = () => {
             <option>Outros</option>
           </select>
           <Textarea placeholder="Mensagem" value={formData.message} onChange={update("message")} className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/40 min-h-[100px]" />
-          <Button type="submit" size="lg" className="w-full font-heading font-bold uppercase tracking-wide text-base">
-            Fale com um Engenheiro
+          <Button type="submit" size="lg" className="w-full font-heading font-bold uppercase tracking-wide text-base" disabled={loading}>
+            {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Enviando...</> : "Fale com um Engenheiro"}
           </Button>
 
           <div className="flex justify-center gap-8 pt-4">
