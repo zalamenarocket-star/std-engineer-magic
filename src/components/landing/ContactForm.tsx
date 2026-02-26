@@ -12,14 +12,17 @@ const ContactForm = () => {
     name: "", company: "", email: "", phone: "", service: "", message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Olá! Meu nome é ${formData.name}, empresa ${formData.company}. Email: ${formData.email}. Telefone: ${formData.phone}. Serviço: ${formData.service}. Mensagem: ${formData.message}`;
-    window.open(
-      `https://api.whatsapp.com/send?phone=5511916930415&text=${encodeURIComponent(text)}`,
-      "_blank"
+
+    // Send email via mailto as fallback
+    const subject = encodeURIComponent(`Contato STD Engenharia - ${formData.service}`);
+    const body = encodeURIComponent(
+      `Nome: ${formData.name}\nEmpresa: ${formData.company}\nE-mail: ${formData.email}\nTelefone: ${formData.phone}\nServiço: ${formData.service}\nMensagem: ${formData.message}`
     );
-    toast({ title: "Redirecionando para WhatsApp", description: "Aguarde enquanto abrimos a conversa." });
+    window.open(`mailto:zalamenarocket@gmail.com?subject=${subject}&body=${body}`, "_self");
+
+    toast({ title: "Formulário enviado!", description: "Entraremos em contato em breve." });
   };
 
   const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -38,7 +41,7 @@ const ContactForm = () => {
             Agende uma Consultoria
           </h2>
           <p className="text-primary-foreground/70">
-            Preencha o formulário e fale com um engenheiro especialista:
+            Preencha o formulário e fale com um engenheiro especialista em inspeção NR-13:
           </p>
         </motion.div>
 
@@ -62,22 +65,20 @@ const ContactForm = () => {
             className="flex h-10 w-full rounded-md border border-secondary/30 bg-navy px-3 py-2 text-sm text-primary-foreground/80 placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-ring"
           >
             <option value="">Serviço de Interesse *</option>
-             <option>Inspeção NR-13</option>
-             <option>Inspeção de Caldeiras</option>
-             <option>Inspeção de Vasos de Pressão</option>
-             <option>Inspeção em Tanques</option>
-             <option>Inspeção em Tubulações</option>
-             <option>Calibração de Válvulas e Manômetros</option>
-             <option>Ensaio Não Destrutivo</option>
-             <option>Inspeção em Ganchos</option>
-             <option>Offshore</option>
-             <option>Outros</option>
+            <option>Inspeção NR-13</option>
+            <option>Inspeção de Caldeiras</option>
+            <option>Inspeção de Vasos de Pressão</option>
+            <option>Inspeção em Tanques</option>
+            <option>Inspeção em Tubulações</option>
+            <option>Calibração de Válvulas e Manômetros</option>
+            <option>Ensaio Não Destrutivo</option>
+            <option>Inspeção em Ganchos</option>
             <option>Offshore</option>
             <option>Outros</option>
           </select>
           <Textarea placeholder="Mensagem" value={formData.message} onChange={update("message")} className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/40 min-h-[100px]" />
           <Button type="submit" size="lg" className="w-full font-heading font-bold uppercase tracking-wide text-base">
-            Agende uma Consultoria
+            Fale com um Engenheiro
           </Button>
 
           <div className="flex justify-center gap-8 pt-4">
