@@ -3,10 +3,10 @@ import { Eye, FlaskConical, BookOpen, FileCheck } from "lucide-react";
 import inspectionImg from "@/assets/inspection-2.jpg";
 
 const items = [
-  { icon: Eye, title: "Inspeção Visual e Dimensional", desc: "Avaliação minuciosa para identificação de desgastes, corrosão e irregularidades." },
-  { icon: FlaskConical, title: "Testes Não Destrutivos (END)", desc: "Técnicas avançadas de END para inspecionar possíveis falhas internas." },
-  { icon: BookOpen, title: "Abertura de Livro de Registro", desc: "Correta abertura do livro de registro com toda a documentação necessária." },
-  { icon: FileCheck, title: "Reconstituição de Prontuário", desc: "Elaboração de memoriais de cálculos com software de última geração." },
+  { icon: Eye, title: "Inspeção Visual e Dimensional", desc: "Avaliação minuciosa conforme NR-13 para identificação de desgastes, corrosão e irregularidades em vasos de pressão e caldeiras." },
+  { icon: FlaskConical, title: "Ensaios Não Destrutivos (END)", desc: "Técnicas avançadas de END — ultrassom, líquido penetrante e partículas magnéticas — para inspeção NR-13." },
+  { icon: BookOpen, title: "Abertura de Livro de Registro", desc: "Correta abertura do livro de registro de segurança conforme exigido pela NR-13 para caldeiras e vasos de pressão." },
+  { icon: FileCheck, title: "Reconstituição de Prontuário", desc: "Elaboração de memoriais de cálculos e reconstituição de prontuários conforme NR-13 com software de última geração." },
 ];
 
 const ServicesIncluded = () => (
@@ -19,7 +19,7 @@ const ServicesIncluded = () => (
         className="text-center mb-16"
       >
         <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
-          O que está incluso na inspeção?
+          O que está incluso na Inspeção NR-13?
         </h2>
         <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
       </motion.div>
@@ -51,7 +51,7 @@ const ServicesIncluded = () => (
         >
           <img
             src={inspectionImg}
-            alt="Inspeção com ultrassom"
+            alt="Ensaio não destrutivo por ultrassom em vaso de pressão conforme inspeção NR-13"
             className="rounded-2xl shadow-2xl w-full object-cover max-h-[450px]"
           />
         </motion.div>

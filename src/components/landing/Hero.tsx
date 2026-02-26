@@ -34,25 +34,25 @@ const Hero = () => (
         </h1>
 
         <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed max-w-xl">
-          A STD Engenharia atua com soluções especializadas em inspeções técnicas
-          de caldeiras, vasos de pressão e tubulações, garantindo conformidade,
-          precisão e confiança em cada projeto.
+          A STD Engenharia é referência em inspeção NR-13 de caldeiras, vasos de pressão,
+          tubulações e tanques. Atuamos desde 1996 com engenheiros habilitados, garantindo
+          conformidade com a NR-13 e segurança operacional em todo o Brasil e exterior.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 mb-12">
-          <a href="#formulario">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button
               size="lg"
-              className="font-heading font-bold uppercase tracking-wide text-sm px-6 animate-pulse-glow w-full sm:w-auto"
+              className="font-heading font-bold uppercase tracking-wide text-sm px-6 animate-pulse-glow w-full"
             >
               Agende sua Inspeção Agora
             </Button>
           </a>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button
               size="lg"
               variant="outline"
-              className="font-heading font-bold uppercase tracking-wide text-sm px-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
+              className="font-heading font-bold uppercase tracking-wide text-sm px-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full"
             >
               Fale com um Especialista
             </Button>

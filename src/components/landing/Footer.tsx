@@ -10,8 +10,19 @@ const Footer = () => (
       <p className="text-primary-foreground/40 text-xs mb-4">
         Inspeção NR-13 · Caldeiras · Vasos de Pressão · Tubulações · Tanques · Calibração de Válvulas e Manômetros
       </p>
+      <p className="text-primary-foreground/40 text-xs mb-2">
+        © 2026 STD Standard Engenharia. Todos os direitos reservados.
+      </p>
       <p className="text-primary-foreground/40 text-xs">
-        © {new Date().getFullYear()} STD Standard Engenharia. Todos os direitos reservados.
+        Criado por{" "}
+        <a
+          href="https://zrocket.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:text-primary/80 transition-colors"
+        >
+          Z Rocket | Marketing &amp; IT
+        </a>
       </p>
     </div>
   </footer>
