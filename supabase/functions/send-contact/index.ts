@@ -22,6 +22,22 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Server-side validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim()) || email.length > 255) {
+      return new Response(
+        JSON.stringify({ error: 'E-mail inválido.' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    const phoneClean = phone.replace(/\D/g, '');
+    if (phoneClean.length < 10 || phoneClean.length > 13) {
+      return new Response(
+        JSON.stringify({ error: 'Telefone inválido.' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     const htmlBody = `
       <h2>Novo contato - STD Engenharia</h2>
       <table style="border-collapse:collapse;width:100%">
