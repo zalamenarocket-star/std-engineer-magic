@@ -7,7 +7,21 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const whatsappLink =
   "https://api.whatsapp.com/send?phone=5511916930415&text=Olá! Gostaria de agendar uma inspeção NR-13 com a STD Engenharia.";
 
-const clientLogos = ["Raízen", "Petrobrás", "Duratex", "Scânia", "Mercedes", "Bunge"];
+import logoRaizen from "@/assets/clients/raizen.png";
+import logoPetrobras from "@/assets/clients/petrobras.png";
+import logoDuratex from "@/assets/clients/duratex.png";
+import logoScania from "@/assets/clients/scania.png";
+import logoMercedes from "@/assets/clients/mercedes.png";
+import logoBunge from "@/assets/clients/bunge.png";
+
+const clientLogos = [
+  { name: "Raízen", src: logoRaizen },
+  { name: "Petrobrás", src: logoPetrobras },
+  { name: "Duratex", src: logoDuratex },
+  { name: "Scania", src: logoScania },
+  { name: "Mercedes-Benz", src: logoMercedes },
+  { name: "Bunge", src: logoBunge },
+];
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -92,14 +106,14 @@ const Hero = () => {
             <p className="text-primary-foreground/50 text-xs uppercase tracking-widest font-heading font-bold mb-4">
               {t("Empresas que confiam na STD", "Companies that trust STD")}
             </p>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
-              {clientLogos.map((name) => (
-                <span
-                  key={name}
-                  className="text-primary-foreground/40 font-heading font-bold text-sm md:text-base tracking-wide hover:text-primary-foreground/70 transition-colors"
-                >
-                  {name}
-                </span>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+              {clientLogos.map((client) => (
+                <img
+                  key={client.name}
+                  src={client.src}
+                  alt={client.name}
+                  className="h-8 md:h-10 object-contain brightness-0 invert opacity-60 hover:opacity-90 transition-opacity"
+                />
               ))}
             </div>
           </div>
