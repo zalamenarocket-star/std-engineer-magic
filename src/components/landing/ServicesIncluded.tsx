@@ -37,7 +37,7 @@ const ServicesIncluded = () => {
           </div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <img src={inspectionImg} alt={t("Ensaio não destrutivo por ultrassom em vaso de pressão conforme inspeção NR-13", "Ultrasound non-destructive testing on pressure vessel per NR-13 inspection")} className="rounded-2xl shadow-2xl w-full object-cover max-h-[450px]" />
+            <img src={inspectionImg} alt={t("Ensaio não destrutivo por ultrassom em vaso de pressão conforme inspeção NR-13", "Ultrasound non-destructive testing on pressure vessel per NR-13 inspection")} className="rounded-2xl shadow-2xl w-full object-cover max-h-[450px]" loading="lazy" />
           </motion.div>
         </div>
       </div>
