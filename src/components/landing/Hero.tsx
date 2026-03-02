@@ -112,7 +112,7 @@ const Hero = () => {
                   key={client.name}
                   src={client.src}
                   alt={client.name}
-                  className="h-8 md:h-10 object-contain brightness-0 invert opacity-60 hover:opacity-90 transition-opacity"
+                  className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain grayscale brightness-[2] contrast-[0.8] opacity-70 hover:opacity-100 transition-opacity"
                 />
               ))}
             </div>
