@@ -41,7 +41,7 @@ const WhyChoose = () => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-            <img src={inspectionImg} alt={t("Inspeção NR-13 em vaso de pressão realizada por engenheiro habilitado da STD Engenharia", "NR-13 pressure vessel inspection by certified STD Engenharia engineer")} className="rounded-2xl shadow-2xl w-full object-cover max-h-[500px]" />
+            <img src={inspectionImg} alt={t("Inspeção NR-13 em vaso de pressão realizada por engenheiro habilitado da STD Engenharia", "NR-13 pressure vessel inspection by certified STD Engenharia engineer")} className="rounded-2xl shadow-2xl w-full object-cover max-h-[500px]" loading="lazy" />
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-xl px-6 py-4 shadow-glow">
               <p className="font-heading font-extrabold text-2xl">{t("Desde 1996", "Since 1996")}</p>
               <p className="text-sm font-medium opacity-90">{t("Referência em NR-13", "NR-13 Reference")}</p>

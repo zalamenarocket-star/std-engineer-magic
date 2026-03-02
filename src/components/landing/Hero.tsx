@@ -12,7 +12,6 @@ import logoPetrobras from "@/assets/clients/petrobras.png";
 import logoDuratex from "@/assets/clients/duratex.png";
 import logoScania from "@/assets/clients/scania.png";
 import logoMercedes from "@/assets/clients/mercedes.png";
-import logoBunge from "@/assets/clients/bunge.png";
 
 const clientLogos = [
   { name: "Raízen", src: logoRaizen },
@@ -20,7 +19,6 @@ const clientLogos = [
   { name: "Duratex", src: logoDuratex },
   { name: "Scania", src: logoScania },
   { name: "Mercedes-Benz", src: logoMercedes },
-  { name: "Bunge", src: logoBunge },
 ];
 
 const Hero = () => {
@@ -104,7 +102,7 @@ const Hero = () => {
           {/* Client Logos */}
           <div>
             <p className="text-primary-foreground/50 text-xs uppercase tracking-widest font-heading font-bold mb-4">
-              {t("Empresas que confiam na STD", "Companies that trust STD")}
+              {t("Algumas das centenas de empresas que confiam na STD", "Some of the hundreds of companies that trust STD")}
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
               {clientLogos.map((client) => (
@@ -112,7 +110,8 @@ const Hero = () => {
                   key={client.name}
                   src={client.src}
                   alt={client.name}
-                  className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain grayscale brightness-[2] contrast-[0.8] opacity-70 hover:opacity-100 transition-opacity"
+                  className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-opacity"
+                  loading="lazy"
                 />
               ))}
             </div>
