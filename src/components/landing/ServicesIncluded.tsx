@@ -18,7 +18,7 @@ const ServicesIncluded = () => {
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
-            {t("O que está incluso na Inspeção NR-13?", "What's Included in the NR-13 Inspection?")}
+            {t("Verificações que podem ser realizadas em inspeções conforme a NR-13", "Verifications that can be performed in inspections according to NR-13")}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
