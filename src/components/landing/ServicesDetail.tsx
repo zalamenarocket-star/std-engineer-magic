@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Flame, Container, PipetteIcon, Gauge } from "lucide-react";
 import serviceCaldeiras from "@/assets/service-caldeiras.jpg";
@@ -23,7 +22,7 @@ const ServicesDetail = () => {
   return (
     <section className="py-20 bg-navy">
       <div className="container">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
             {t("Serviços Especializados em Inspeção NR-13", "Specialized NR-13 Inspection Services")}
           </h2>
@@ -31,12 +30,12 @@ const ServicesDetail = () => {
             {t("A STD Engenharia oferece serviços completos de inspeção NR-13 para caldeiras, vasos de pressão, tubulações, tanques e calibração de instrumentos.", "STD Engenharia offers complete NR-13 inspection services for boilers, pressure vessels, piping, tanks and instrument calibration.")}
           </p>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map(({ icon: Icon, tag, title, desc, image, alt }, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="bg-navy-light rounded-2xl overflow-hidden border border-secondary/20 hover:border-primary/40 transition-colors group">
-              <img src={image} alt={alt} className="w-full h-44 object-cover" loading="lazy" />
+          {services.map(({ icon: Icon, tag, title, desc, image, alt }) => (
+            <div key={title} className="bg-navy-light rounded-2xl overflow-hidden border border-secondary/20 hover:border-primary/40 transition-colors group">
+              <img src={image} alt={alt} className="w-full h-44 object-cover" loading="lazy" width="350" height="176" />
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
                   <Icon className="w-6 h-6 text-primary" />
@@ -50,7 +49,7 @@ const ServicesDetail = () => {
                   </Button>
                 </a>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

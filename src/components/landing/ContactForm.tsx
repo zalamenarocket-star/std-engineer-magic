@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,15 +19,13 @@ const ContactForm = () => {
     service: "",
     message: "",
   });
-  // Anti-spam: honeypot field + timestamp
   const [honeypot, setHoneypot] = useState("");
   const formLoadTime = useRef(Date.now());
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Anti-spam checks
-    if (honeypot) return; // Bot filled honeypot
+    if (honeypot) return;
     const elapsed = Date.now() - formLoadTime.current;
     if (elapsed < 3000) {
       toast({
@@ -39,7 +36,6 @@ const ContactForm = () => {
       return;
     }
 
-    // Basic validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
       toast({
@@ -96,12 +92,7 @@ const ContactForm = () => {
   return (
     <section id="formulario" className="py-20 bg-navy">
       <div className="container max-w-2xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-10"
-        >
+        <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
             {t("Agende uma Consultoria", "Schedule a Consultation")}
           </h2>
@@ -111,16 +102,12 @@ const ContactForm = () => {
               "Fill out the form and talk to an NR-13 inspection specialist engineer:",
             )}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <form
           onSubmit={handleSubmit}
           className="bg-navy-light rounded-2xl p-8 border border-secondary/20 space-y-4"
         >
-          {/* Honeypot - hidden from humans */}
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true" tabIndex={-1}>
             <Input
               type="text"
@@ -218,7 +205,7 @@ const ContactForm = () => {
               </div>
             ))}
           </div>
-        </motion.form>
+        </form>
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -18,12 +17,12 @@ const FAQ = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
             {t("Perguntas Frequentes", "Frequently Asked Questions")}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+        </div>
 
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, i) => (
