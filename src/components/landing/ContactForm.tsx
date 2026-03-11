@@ -98,7 +98,7 @@ const ContactForm = () => {
           </h2>
           <p className="text-primary-foreground/70">
             {t(
-              "Preencha o formulário. Fale engenheiro especialista em inspeção NR-13:",
+              "Preencha o formulário. Fale com um engenheiro especialista em inspeção NR-13:",
               "Fill out the form and talk to an NR-13 inspection specialist engineer:",
             )}
           </p>
