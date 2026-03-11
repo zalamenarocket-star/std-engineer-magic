@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Eye, FlaskConical, BookOpen, FileCheck } from "lucide-react";
 import inspectionImg from "@/assets/inspection-2.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -44,30 +43,21 @@ const ServicesIncluded = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
             {t(
-              "Verificações que podem ser realizadas na Inspeção NR-13",
+              "Verificações que podem ser realizadas em inspeções conforme a NR-13",
               "Verifications that can be performed in inspections according to NR-13",
             )}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {items.map(({ icon: Icon, title, desc }, i) => (
-              <motion.div
+            {items.map(({ icon: Icon, title, desc }) => (
+              <div
                 key={title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -75,11 +65,11 @@ const ServicesIncluded = () => {
                 </div>
                 <h3 className="font-heading font-bold text-foreground text-sm mb-2">{title}</h3>
                 <p className="text-muted-foreground text-sm">{desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+          <div>
             <img
               src={inspectionImg}
               alt={t(
@@ -88,8 +78,10 @@ const ServicesIncluded = () => {
               )}
               className="rounded-2xl shadow-2xl w-full object-cover max-h-[450px]"
               loading="lazy"
+              width="600"
+              height="450"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

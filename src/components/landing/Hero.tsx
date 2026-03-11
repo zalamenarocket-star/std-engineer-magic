@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Shield, Award, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -33,12 +32,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[hsl(var(--navy-dark)/0.8)]" />
 
       <div className="container relative z-10 py-20 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl"
-        >
+        <div className="max-w-2xl">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="h-px w-10 bg-primary" />
             <span className="text-primary font-heading font-bold text-sm uppercase tracking-widest">
@@ -111,12 +105,14 @@ const Hero = () => {
                   src={client.src}
                   alt={client.name}
                   className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-opacity"
-                  loading="lazy"
+                  loading="eager"
+                  width="120"
+                  height="40"
                 />
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

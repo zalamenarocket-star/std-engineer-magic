@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const NR13Explainer = () => {
@@ -38,21 +37,21 @@ const NR13Explainer = () => {
   return (
     <section className="py-20 bg-navy">
       <div className="container max-w-4xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
             {t("Tudo sobre Inspeção NR-13: Caldeiras, Vasos de Pressão e Tubulações", "Everything about NR-13 Inspection: Boilers, Pressure Vessels & Piping")}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+        </div>
 
-        <motion.article initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="prose-invert space-y-8 text-primary-foreground/80 leading-relaxed">
+        <article className="prose-invert space-y-8 text-primary-foreground/80 leading-relaxed">
           {sections.map(({ title, text }) => (
             <div key={title}>
               <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">{title}</h3>
               <p className="text-sm">{text}</p>
             </div>
           ))}
-        </motion.article>
+        </article>
       </div>
     </section>
   );
