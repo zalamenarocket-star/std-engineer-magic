@@ -25,8 +25,14 @@ const WarningSection = () => {
 
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
             {t(
-              <>A falta de inspeção pode gerar multas de até{" "}<strong className="text-foreground">R$ 20.000,00</strong> e interdição imediata. Garanta sua regularidade!</>,
-              <>Lack of inspection can result in fines up to{" "}<strong className="text-foreground">R$ 20,000.00</strong> and immediate shutdown. Ensure your compliance!</>
+              <>
+                A falta de inspeção pode gerar multas de até <strong className="text-foreground">R$ 20.000,00</strong> e
+                interdição imediata. Garanta sua regularidade!
+              </>,
+              <>
+                Lack of inspection can result in fines up to <strong className="text-foreground">R$ 20,000.00</strong>{" "}
+                and immediate shutdown. Ensure your compliance!
+              </>,
             )}
           </p>
 
@@ -36,7 +42,7 @@ const WarningSection = () => {
             rel="noopener noreferrer"
           >
             <Button size="lg" className="font-heading font-bold uppercase tracking-wide text-sm px-6">
-              {t("Falar com Engenheiro", "Talk to an Engineer")}
+              {t("Agende sua Inspeção Agora", "Talk to an Engineer")}
             </Button>
           </a>
         </motion.div>
