@@ -98,16 +98,13 @@ const ContactForm = () => {
           </h2>
           <p className="text-primary-foreground/70">
             {t(
-              "Preencha o formulário e fale com um engenheiro especialista em inspeção NR-13:",
+              "Preencha o formulário. Fale engenheiro especialista em inspeção NR-13:",
               "Fill out the form and talk to an NR-13 inspection specialist engineer:",
             )}
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-navy-light rounded-2xl p-8 border border-secondary/20 space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="bg-navy-light rounded-2xl p-8 border border-secondary/20 space-y-4">
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true" tabIndex={-1}>
             <Input
               type="text"
