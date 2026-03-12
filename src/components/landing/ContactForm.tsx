@@ -94,7 +94,7 @@ const ContactForm = () => {
       <div className="container max-w-2xl">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
-            {t("Agende uma Consultoria", "Schedule a Consultation")}
+            {t("Fale com um Especialista", "Schedule a Consultation")}
           </h2>
           <p className="text-primary-foreground/70">
             {t(
