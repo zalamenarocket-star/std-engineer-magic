@@ -46,7 +46,7 @@ const ServicesIncluded = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
             {t(
-              "Verificações que podem ser realizadas em inspeções conforme a NR-13",
+              "Verificações que podem ser realizados em inspeções conforme a NR-13",
               "Verifications that can be performed in inspections according to NR-13",
             )}
           </h2>
