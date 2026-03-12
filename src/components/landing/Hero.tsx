@@ -41,7 +41,7 @@ const Hero = () => {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary-foreground leading-[1.1] mb-6">
             {t(
               <>
-                Inspeção NR-13 - Caldeiras, Vasos de Pressão, Tanques e Tubulações{" "}
+                Inspeção NR-13, Caldeiras, Vasos de Pressão, Tanques e Tubulações{" "}
                 <span className="text-gradient"></span>
               </>,
               <>
