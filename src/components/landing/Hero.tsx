@@ -25,10 +25,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
       <div className="absolute inset-0 bg-[hsl(var(--navy-dark)/0.8)]" />
 
       <div className="container relative z-10 py-20 flex flex-col items-center text-center">
@@ -43,15 +40,20 @@ const Hero = () => {
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary-foreground leading-[1.1] mb-6">
             {t(
-              <>Inspeção em Vasos de Pressão conforme{" "}<span className="text-gradient">NR-13</span></>,
-              <>Pressure Vessel Inspection per{" "}<span className="text-gradient">NR-13</span></>
+              <>
+                Inspeção NR-13 - Caldeiras, Vasos de Pressão, Tanques e Tubulações{" "}
+                <span className="text-gradient"></span>
+              </>,
+              <>
+                Pressure Vessel Inspection per <span className="text-gradient">NR-13</span>
+              </>,
             )}
           </h1>
 
           <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed max-w-xl mx-auto">
             {t(
               "A STD Engenharia é referência em inspeção NR-13 de caldeiras, vasos de pressão, tubulações e tanques. Atuamos desde 1996 com engenheiros habilitados, garantindo conformidade com a NR-13 e segurança operacional em todo o Brasil e exterior.",
-              "STD Engenharia is a reference in NR-13 inspection of boilers, pressure vessels, piping and tanks. Operating since 1996 with certified engineers, ensuring NR-13 compliance and operational safety throughout Brazil and abroad."
+              "STD Engenharia is a reference in NR-13 inspection of boilers, pressure vessels, piping and tanks. Operating since 1996 with certified engineers, ensuring NR-13 compliance and operational safety throughout Brazil and abroad.",
             )}
           </p>
 
@@ -78,8 +80,16 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-8 mb-12">
             {[
               { icon: Shield, value: "NR-13", label: t("Conformidade Total", "Full Compliance") },
-              { icon: Award, value: t("Desde 1996", "Since 1996"), label: t("Referência no Mercado", "Market Reference") },
-              { icon: Globe, value: t("Brasil e Exterior", "Brazil & Abroad"), label: t("Atuação Global", "Global Presence") },
+              {
+                icon: Award,
+                value: t("Desde 1996", "Since 1996"),
+                label: t("Referência no Mercado", "Market Reference"),
+              },
+              {
+                icon: Globe,
+                value: t("Brasil e Exterior", "Brazil & Abroad"),
+                label: t("Atuação Global", "Global Presence"),
+              },
             ].map(({ icon: Icon, value, label }) => (
               <div key={value} className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
@@ -96,7 +106,10 @@ const Hero = () => {
           {/* Client Logos */}
           <div>
             <p className="text-primary-foreground/50 text-xs uppercase tracking-widest font-heading font-bold mb-4">
-              {t("Algumas das centenas de empresas que confiam na STD", "Some of the hundreds of companies that trust STD")}
+              {t(
+                "Algumas das centenas de empresas que confiam na STD",
+                "Some of the hundreds of companies that trust STD",
+              )}
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
               {clientLogos.map((client) => (
