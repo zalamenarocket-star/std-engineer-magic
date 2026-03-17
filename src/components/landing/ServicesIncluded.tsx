@@ -1,5 +1,5 @@
 import { Eye, FlaskConical, BookOpen, FileCheck } from "lucide-react";
-import inspectionImg from "@/assets/inspection-2.jpg";
+import inspectionImg from "@/assets/ultrassom-5.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const ServicesIncluded = () => {
