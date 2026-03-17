@@ -25,7 +25,16 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
+      <img
+        src={heroBg}
+        alt=""
+        role="presentation"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        width="1920"
+        height="1080"
+        decoding="async"
+      />
       <div className="absolute inset-0 bg-[hsl(var(--navy-dark)/0.8)]" />
 
       <div className="container relative z-10 py-20 flex flex-col items-center text-center">
@@ -61,7 +70,7 @@ const Hero = () => {
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="font-heading font-bold uppercase tracking-wide text-sm px-6 animate-pulse-glow w-full"
+                className="font-heading font-bold uppercase tracking-wide text-sm px-6 shadow-glow w-full"
               >
                 {t("Agende sua Inspeção Agora", "Schedule Your Inspection Now")}
               </Button>
@@ -93,11 +102,11 @@ const Hero = () => {
             ].map(({ icon: Icon, value, label }) => (
               <div key={value} className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-primary" />
+                  <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-heading font-extrabold text-primary-foreground text-sm">{value}</p>
-                  <p className="text-primary-foreground/60 text-xs">{label}</p>
+                  <p className="text-primary-foreground/70 text-xs">{label}</p>
                 </div>
               </div>
             ))}
@@ -105,7 +114,7 @@ const Hero = () => {
 
           {/* Client Logos */}
           <div>
-            <p className="text-primary-foreground/50 text-xs uppercase tracking-widest font-heading font-bold mb-4">
+            <p className="text-primary-foreground/70 text-xs uppercase tracking-widest font-heading font-bold mb-4">
               {t(
                 "Algumas das centenas de empresas que confiam na STD",
                 "Some of the hundreds of companies that trust STD",
@@ -116,7 +125,7 @@ const Hero = () => {
                 <img
                   key={client.name}
                   src={client.src}
-                  alt={client.name}
+                  alt={`${client.name} - cliente STD Engenharia`}
                   className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-opacity"
                   loading="eager"
                   width="120"
