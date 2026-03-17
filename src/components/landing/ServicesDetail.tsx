@@ -42,7 +42,7 @@ const ServicesDetail = () => {
                 </div>
                 <span className="text-xs font-heading font-bold text-primary uppercase tracking-widest">{tag}</span>
                 <h3 className="text-lg font-heading font-bold text-primary-foreground mt-2 mb-3">{title}</h3>
-                <p className="text-primary-foreground/70 text-sm mb-5 leading-relaxed">{desc}</p>
+                <p className="text-primary-foreground/80 text-sm mb-5 leading-relaxed">{desc}</p>
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading font-bold text-xs uppercase w-full">
                     {t("Agende sua Inspeção Agora", "Schedule Your Inspection Now")}
