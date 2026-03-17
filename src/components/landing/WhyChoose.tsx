@@ -32,7 +32,7 @@ const WhyChoose = () => {
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-primary-foreground text-base mb-1">{title}</h3>
-                    <p className="text-primary-foreground/70 text-sm">{desc}</p>
+                    <p className="text-primary-foreground/80 text-sm">{desc}</p>
                   </div>
                 </div>
               ))}

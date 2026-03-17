@@ -44,7 +44,7 @@ const NR13Explainer = () => {
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </div>
 
-        <article className="prose-invert space-y-8 text-primary-foreground/80 leading-relaxed">
+        <article className="space-y-8 text-primary-foreground/85 leading-relaxed">
           {sections.map(({ title, text }) => (
             <div key={title}>
               <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">{title}</h3>
