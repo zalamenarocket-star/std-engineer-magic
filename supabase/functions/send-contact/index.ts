@@ -1,5 +1,4 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
-import nodemailer from "npm:nodemailer@6.9.12";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -9,11 +8,8 @@ const corsHeaders = {
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("VITE_SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-const SMTP_PASSWORD = Deno.env.get("SMTP_PASSWORD");
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
-const SMTP_HOST = "mail.b.locamail.com.br";
-const SMTP_PORT = 465;
-const SMTP_USER = "noreplay@stdengenharia.com.br";
 const RECIPIENT_EMAIL = "std@stdengenharia.com.br";
 
 const jsonResponse = (body: Record<string, unknown>, status = 200) =>
@@ -80,49 +76,48 @@ Deno.serve(async (req) => {
       console.error("Database insert error:", dbError);
     }
 
-    // Send email via SMTP
-    if (SMTP_PASSWORD) {
+    // Send email via Resend API
+    if (RESEND_API_KEY) {
       try {
-        const transporter = nodemailer.createTransport({
-          host: SMTP_HOST,
-          port: SMTP_PORT,
-          secure: true,
-          auth: {
-            user: SMTP_USER,
-            pass: SMTP_PASSWORD,
-          },
-          tls: {
-            rejectUnauthorized: true,
-            servername: "mail.b.locamail.com.br",
-          },
-        });
-
         const htmlBody = `
-          <h2>Novo Lead - STD Standard Engenharia</h2>
-          <table style="border-collapse:collapse;width:100%;max-width:600px;">
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Nome</td><td style="padding:8px;border:1px solid #ddd;">${name}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Empresa</td><td style="padding:8px;border:1px solid #ddd;">${company || "—"}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">E-mail</td><td style="padding:8px;border:1px solid #ddd;">${email}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Telefone</td><td style="padding:8px;border:1px solid #ddd;">${phone}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Serviço</td><td style="padding:8px;border:1px solid #ddd;">${service}</td></tr>
-            <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Mensagem</td><td style="padding:8px;border:1px solid #ddd;">${message || "—"}</td></tr>
+          <h2 style="color:#0a1628;font-family:Arial,sans-serif;">Novo Lead - STD Standard Engenharia</h2>
+          <table style="border-collapse:collapse;width:100%;max-width:600px;font-family:Arial,sans-serif;">
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;width:140px;">Nome</td><td style="padding:10px 12px;border:1px solid #ddd;">${name}</td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Empresa</td><td style="padding:10px 12px;border:1px solid #ddd;">${company || "—"}</td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">E-mail</td><td style="padding:10px 12px;border:1px solid #ddd;"><a href="mailto:${email}">${email}</a></td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Telefone</td><td style="padding:10px 12px;border:1px solid #ddd;"><a href="https://wa.me/55${phoneClean}">${phone}</a></td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Serviço</td><td style="padding:10px 12px;border:1px solid #ddd;">${service}</td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Mensagem</td><td style="padding:10px 12px;border:1px solid #ddd;">${message || "—"}</td></tr>
           </table>
-          <p style="color:#888;font-size:12px;margin-top:16px;">Enviado pelo formulário do site STD Standard Engenharia</p>
+          <p style="color:#888;font-size:12px;margin-top:20px;font-family:Arial,sans-serif;">Enviado pelo formulário do site STD Standard Engenharia</p>
         `;
 
-        await transporter.sendMail({
-          from: `"STD Standard Engenharia" <${SMTP_USER}>`,
-          to: RECIPIENT_EMAIL,
-          subject: `Novo Lead: ${name} - ${service}`,
-          html: htmlBody,
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+          },
+          body: JSON.stringify({
+            from: "STD Engenharia <onboarding@resend.dev>",
+            to: [RECIPIENT_EMAIL],
+            subject: `Novo Lead: ${name} - ${service}`,
+            html: htmlBody,
+            reply_to: email,
+          }),
         });
 
-        console.log("Email sent successfully via SMTP");
-      } catch (smtpError) {
-        console.error("SMTP send error:", smtpError);
+        const resData = await res.json();
+        if (res.ok) {
+          console.log("Email sent via Resend:", resData.id);
+        } else {
+          console.error("Resend error:", JSON.stringify(resData));
+        }
+      } catch (emailError) {
+        console.error("Email send error:", emailError);
       }
     } else {
-      console.warn("SMTP_PASSWORD not configured");
+      console.warn("RESEND_API_KEY not configured");
     }
 
     return jsonResponse({ success: true });
