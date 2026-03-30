@@ -1,5 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
+import nodemailer from "npm:nodemailer@6.9.12";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -83,15 +83,16 @@ Deno.serve(async (req) => {
     // Send email via SMTP
     if (SMTP_PASSWORD) {
       try {
-        const client = new SMTPClient({
-          connection: {
-            hostname: SMTP_HOST,
-            port: SMTP_PORT,
-            tls: true,
-            auth: {
-              username: SMTP_USER,
-              password: SMTP_PASSWORD,
-            },
+        const transporter = nodemailer.createTransport({
+          host: SMTP_HOST,
+          port: SMTP_PORT,
+          secure: true,
+          auth: {
+            user: SMTP_USER,
+            pass: SMTP_PASSWORD,
+          },
+          tls: {
+            rejectUnauthorized: false,
           },
         });
 
@@ -108,22 +109,19 @@ Deno.serve(async (req) => {
           <p style="color:#888;font-size:12px;margin-top:16px;">Enviado pelo formulário do site STD Standard Engenharia</p>
         `;
 
-        await client.send({
-          from: SMTP_USER,
+        await transporter.sendMail({
+          from: `"STD Standard Engenharia" <${SMTP_USER}>`,
           to: RECIPIENT_EMAIL,
           subject: `Novo Lead: ${name} - ${service}`,
-          content: "auto",
           html: htmlBody,
         });
 
-        await client.close();
         console.log("Email sent successfully via SMTP");
       } catch (smtpError) {
         console.error("SMTP send error:", smtpError);
-        // Don't fail the request if email fails but DB succeeded
       }
     } else {
-      console.warn("SMTP_PASSWORD not configured, skipping email send");
+      console.warn("SMTP_PASSWORD not configured");
     }
 
     return jsonResponse({ success: true });
