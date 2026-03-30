@@ -92,7 +92,8 @@ Deno.serve(async (req) => {
             pass: SMTP_PASSWORD,
           },
           tls: {
-            rejectUnauthorized: false,
+            rejectUnauthorized: true,
+            servername: "mail.b.locamail.com.br",
           },
         });
 
