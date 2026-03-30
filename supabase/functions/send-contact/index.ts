@@ -11,7 +11,7 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("VITE_SUPABASE
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const SMTP_PASSWORD = Deno.env.get("SMTP_PASSWORD");
 
-const SMTP_HOST = "pop.stdengenharia.com.br";
+const SMTP_HOST = "mail.b.locamail.com.br";
 const SMTP_PORT = 465;
 const SMTP_USER = "noreplay@stdengenharia.com.br";
 const RECIPIENT_EMAIL = "std@stdengenharia.com.br";
