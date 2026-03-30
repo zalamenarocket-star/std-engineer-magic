@@ -1,4 +1,5 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -6,83 +7,76 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("VITE_SUPABASE_URL");
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+const jsonResponse = (body: Record<string, unknown>, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+
+const sanitizeText = (value: unknown, maxLength: number) =>
+  typeof value === "string" ? value.trim().replace(/\s+/g, " ").slice(0, maxLength) : "";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (req.method !== "POST") {
+    return jsonResponse({ error: "Método não permitido." }, 405);
+  }
+
   try {
-    const { name, company, email, phone, service, message } = await req.json();
+    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      console.error("Missing backend credentials for send-contact function.");
+      return jsonResponse({ error: "Serviço indisponível no momento." }, 500);
+    }
+
+    const body = await req.json();
+    const name = sanitizeText(body.name, 100);
+    const company = sanitizeText(body.company, 100);
+    const email = sanitizeText(body.email, 255).toLowerCase();
+    const phone = sanitizeText(body.phone, 20);
+    const service = sanitizeText(body.service, 100);
+    const message = sanitizeText(body.message, 1000);
 
     if (!name || !email || !phone || !service) {
-      return new Response(JSON.stringify({ error: "Campos obrigatórios não preenchidos." }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Campos obrigatórios não preenchidos." }, 400);
     }
 
-    // Server-side validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim()) || email.length > 255) {
-      return new Response(JSON.stringify({ error: "E-mail inválido." }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    if (!emailRegex.test(email)) {
+      return jsonResponse({ error: "E-mail inválido." }, 400);
     }
+
     const phoneClean = phone.replace(/\D/g, "");
     if (phoneClean.length < 10 || phoneClean.length > 13) {
-      return new Response(JSON.stringify({ error: "Telefone inválido." }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Telefone inválido." }, 400);
     }
 
-    const htmlBody = `
-      <h2>Novo contato - STD Engenharia</h2>
-      <table style="border-collapse:collapse;width:100%">
-        <tr><td style="padding:8px;font-weight:bold">Nome:</td><td style="padding:8px">${name}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold">Empresa:</td><td style="padding:8px">${company || "-"}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold">E-mail:</td><td style="padding:8px">${email}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold">Telefone:</td><td style="padding:8px">${phone}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold">Serviço:</td><td style="padding:8px">${service}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold">Mensagem:</td><td style="padding:8px">${message || "-"}</td></tr>
-      </table>
-    `;
-
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "STD Engenharia <onboarding@resend.dev>",
-        to: ["zalamenarocket@gmail.com"],
-        subject: `Novo Contato - ${service} - ${name}`,
-        html: htmlBody,
-      }),
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false },
     });
 
-    const data = await res.json();
+    const { error } = await supabase.from("contact_submissions").insert({
+      name,
+      company: company || null,
+      email,
+      phone,
+      service,
+      message: message || null,
+    });
 
-    if (!res.ok) {
-      console.error("Resend error:", data);
-      return new Response(JSON.stringify({ error: "Erro ao enviar e-mail." }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+    if (error) {
+      console.error("Database insert error:", error);
+      return jsonResponse({ error: "Erro ao enviar formulário." }, 500);
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return jsonResponse({ success: true });
   } catch (error) {
-    console.error("Error:", error);
-    return new Response(JSON.stringify({ error: "Erro interno." }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.error("Unexpected error:", error);
+    return jsonResponse({ error: "Erro interno." }, 500);
   }
 });
