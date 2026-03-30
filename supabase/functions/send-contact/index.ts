@@ -1,4 +1,3 @@
-import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
@@ -9,6 +8,9 @@ const corsHeaders = {
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("VITE_SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+const RECIPIENT_EMAIL = "zalamenarocket@gmail.com";
 
 const jsonResponse = (body: Record<string, unknown>, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -30,7 +32,7 @@ Deno.serve(async (req) => {
 
   try {
     if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-      console.error("Missing backend credentials for send-contact function.");
+      console.error("Missing backend credentials.");
       return jsonResponse({ error: "Serviço indisponível no momento." }, 500);
     }
 
@@ -56,11 +58,12 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: "Telefone inválido." }, 400);
     }
 
+    // Save to database
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
 
-    const { error } = await supabase.from("contact_submissions").insert({
+    const { error: dbError } = await supabase.from("contact_submissions").insert({
       name,
       company: company || null,
       email,
@@ -69,9 +72,52 @@ Deno.serve(async (req) => {
       message: message || null,
     });
 
-    if (error) {
-      console.error("Database insert error:", error);
-      return jsonResponse({ error: "Erro ao enviar formulário." }, 500);
+    if (dbError) {
+      console.error("Database insert error:", dbError);
+    }
+
+    // Send email via Resend API
+    if (RESEND_API_KEY) {
+      try {
+        const htmlBody = `
+          <h2 style="color:#0a1628;font-family:Arial,sans-serif;">Novo Lead - STD Standard Engenharia</h2>
+          <table style="border-collapse:collapse;width:100%;max-width:600px;font-family:Arial,sans-serif;">
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;width:140px;">Nome</td><td style="padding:10px 12px;border:1px solid #ddd;">${name}</td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Empresa</td><td style="padding:10px 12px;border:1px solid #ddd;">${company || "—"}</td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">E-mail</td><td style="padding:10px 12px;border:1px solid #ddd;"><a href="mailto:${email}">${email}</a></td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Telefone</td><td style="padding:10px 12px;border:1px solid #ddd;"><a href="https://wa.me/55${phoneClean}">${phone}</a></td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Serviço</td><td style="padding:10px 12px;border:1px solid #ddd;">${service}</td></tr>
+            <tr><td style="padding:10px 12px;border:1px solid #ddd;font-weight:bold;background:#f5f5f5;">Mensagem</td><td style="padding:10px 12px;border:1px solid #ddd;">${message || "—"}</td></tr>
+          </table>
+          <p style="color:#888;font-size:12px;margin-top:20px;font-family:Arial,sans-serif;">Enviado pelo formulário do site STD Standard Engenharia</p>
+        `;
+
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+          },
+          body: JSON.stringify({
+            from: "STD Engenharia <onboarding@resend.dev>",
+            to: [RECIPIENT_EMAIL],
+            subject: `Novo Lead: ${name} - ${service}`,
+            html: htmlBody,
+            reply_to: email,
+          }),
+        });
+
+        const resData = await res.json();
+        if (res.ok) {
+          console.log("Email sent via Resend:", resData.id);
+        } else {
+          console.error("Resend error:", JSON.stringify(resData));
+        }
+      } catch (emailError) {
+        console.error("Email send error:", emailError);
+      }
+    } else {
+      console.warn("RESEND_API_KEY not configured");
     }
 
     return jsonResponse({ success: true });
