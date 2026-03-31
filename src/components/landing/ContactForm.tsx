@@ -105,8 +105,8 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-navy-light rounded-2xl p-8 border border-secondary/20 space-y-4">
-          <div className="absolute opacity-0 pointer-events-none" aria-hidden="true" tabIndex={-1}>
+        <form onSubmit={handleSubmit} className="relative bg-navy-light rounded-2xl p-8 border border-secondary/20 space-y-4">
+          <div className="absolute -left-[9999px] opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
             <Input
               type="text"
               name="website_url"
