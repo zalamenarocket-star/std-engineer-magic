@@ -91,13 +91,13 @@ const ContactForm = () => {
       setFormData((prev) => ({ ...prev, [field]: e.target.value }));
 
   return (
-    <section id="formulario" className="py-20 bg-navy" aria-labelledby="contact-heading">
+    <section id="formulario" className="py-20 bg-muted dark:bg-navy" aria-labelledby="contact-heading">
       <div className="container max-w-2xl">
         <div className="text-center mb-10">
-          <h2 id="contact-heading" className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
+          <h2 id="contact-heading" className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
             {t("Fale com um Especialista", "Schedule a Consultation")}
           </h2>
-          <p className="text-primary-foreground/80">
+          <p className="text-muted-foreground">
             {t(
               "Preencha o formulário. Fale com um engenheiro especialista em inspeção NR-13:",
               "Fill out the form and talk to an NR-13 inspection specialist engineer:",
@@ -105,7 +105,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="relative bg-navy-light rounded-2xl p-8 border border-secondary/20 space-y-4">
+        <form onSubmit={handleSubmit} className="relative bg-card dark:bg-navy-light rounded-2xl p-8 border border-border space-y-4">
           <div className="hidden" aria-hidden="true">
             <input
               type="text"
@@ -118,7 +118,7 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <Label htmlFor="contact-name" className="text-primary-foreground/90 text-sm mb-1.5 block">
+            <Label htmlFor="contact-name" className="text-foreground/90 text-sm mb-1.5 block">
               {t("Nome Completo", "Full Name")} *
             </Label>
             <Input
@@ -127,12 +127,12 @@ const ContactForm = () => {
               value={formData.name}
               onChange={update("name")}
               maxLength={100}
-              className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/50"
+              className="bg-background dark:bg-navy border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
 
           <div>
-            <Label htmlFor="contact-company" className="text-primary-foreground/90 text-sm mb-1.5 block">
+            <Label htmlFor="contact-company" className="text-foreground/90 text-sm mb-1.5 block">
               {t("Empresa", "Company")}
             </Label>
             <Input
@@ -140,13 +140,13 @@ const ContactForm = () => {
               value={formData.company}
               onChange={update("company")}
               maxLength={100}
-              className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/50"
+              className="bg-background dark:bg-navy border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="contact-email" className="text-primary-foreground/90 text-sm mb-1.5 block">
+              <Label htmlFor="contact-email" className="text-foreground/90 text-sm mb-1.5 block">
                 {t("E-mail Corporativo", "Corporate Email")} *
               </Label>
               <Input
@@ -156,11 +156,11 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={update("email")}
                 maxLength={255}
-                className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/50"
+                className="bg-background dark:bg-navy border-border text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div>
-              <Label htmlFor="contact-phone" className="text-primary-foreground/90 text-sm mb-1.5 block">
+              <Label htmlFor="contact-phone" className="text-foreground/90 text-sm mb-1.5 block">
                 {t("Telefone/WhatsApp", "Phone/WhatsApp")} *
               </Label>
               <Input
@@ -169,13 +169,13 @@ const ContactForm = () => {
                 value={formData.phone}
                 onChange={update("phone")}
                 maxLength={20}
-                className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/50"
+                className="bg-background dark:bg-navy border-border text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
 
           <div>
-            <Label htmlFor="contact-service" className="text-primary-foreground/90 text-sm mb-1.5 block">
+            <Label htmlFor="contact-service" className="text-foreground/90 text-sm mb-1.5 block">
               {t("Serviço de Interesse", "Service of Interest")} *
             </Label>
             <select
@@ -183,7 +183,7 @@ const ContactForm = () => {
               value={formData.service}
               onChange={update("service")}
               required
-              className="flex h-10 w-full rounded-md border border-secondary/30 bg-navy px-3 py-2 text-sm text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="flex h-10 w-full rounded-md border border-border bg-background dark:bg-navy px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="">{t("Selecione um serviço", "Select a service")}</option>
               <option>{t("Inspeção NR-13", "NR-13 Inspection")}</option>
@@ -200,7 +200,7 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <Label htmlFor="contact-message" className="text-primary-foreground/90 text-sm mb-1.5 block">
+            <Label htmlFor="contact-message" className="text-foreground/90 text-sm mb-1.5 block">
               {t("Mensagem", "Message")}
             </Label>
             <Textarea
@@ -208,7 +208,7 @@ const ContactForm = () => {
               value={formData.message}
               onChange={update("message")}
               maxLength={1000}
-              className="bg-navy border-secondary/30 text-primary-foreground placeholder:text-primary-foreground/50 min-h-[100px]"
+              className="bg-background dark:bg-navy border-border text-foreground placeholder:text-muted-foreground min-h-[100px]"
             />
           </div>
 
@@ -233,7 +233,7 @@ const ContactForm = () => {
               { icon: Clock, label: t("Resposta Rápida", "Fast Response") },
               { icon: Headphones, label: t("Suporte Dedicado", "Dedicated Support") },
             ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-primary-foreground/70 text-xs">
+              <div key={label} className="flex items-center gap-2 text-muted-foreground text-xs">
                 <Icon className="w-4 h-4 text-primary" aria-hidden="true" />
                 {label}
               </div>

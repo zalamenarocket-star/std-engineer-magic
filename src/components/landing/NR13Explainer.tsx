@@ -35,19 +35,19 @@ const NR13Explainer = () => {
   ];
 
   return (
-    <section className="py-20 bg-navy">
+    <section className="py-20 bg-muted dark:bg-navy">
       <div className="container max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-4">
             {t("Tudo sobre Inspeção NR-13: Caldeiras, Vasos de Pressão e Tubulações", "Everything about NR-13 Inspection: Boilers, Pressure Vessels & Piping")}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </div>
 
-        <article className="space-y-8 text-primary-foreground/85 leading-relaxed">
+        <article className="space-y-8 text-muted-foreground leading-relaxed">
           {sections.map(({ title, text }) => (
             <div key={title}>
-              <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">{title}</h3>
+              <h3 className="text-xl font-heading font-bold text-foreground mb-3">{title}</h3>
               <p className="text-sm">{text}</p>
             </div>
           ))}

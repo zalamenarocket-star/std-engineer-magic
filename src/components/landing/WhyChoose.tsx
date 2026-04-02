@@ -14,11 +14,11 @@ const WhyChoose = () => {
   ];
 
   return (
-    <section className="py-20 bg-navy">
+    <section className="py-20 bg-muted dark:bg-navy">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-primary-foreground mb-10">
+            <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-10">
               {t(
                 <>Por que escolher a{" "}<span className="text-gradient">STD Engenharia</span> para sua Inspeção NR-13?</>,
                 <>Why choose{" "}<span className="text-gradient">STD Engenharia</span> for your NR-13 Inspection?</>
@@ -31,8 +31,8 @@ const WhyChoose = () => {
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-primary-foreground text-base mb-1">{title}</h3>
-                    <p className="text-primary-foreground/80 text-sm">{desc}</p>
+                    <h3 className="font-heading font-bold text-foreground text-base mb-1">{title}</h3>
+                    <p className="text-muted-foreground text-sm">{desc}</p>
                   </div>
                 </div>
               ))}
