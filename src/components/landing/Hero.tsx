@@ -105,8 +105,8 @@ const Hero = () => {
                   <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-heading font-extrabold text-foreground dark:text-primary-foreground text-sm">{value}</p>
-                  <p className="text-foreground/70 dark:text-primary-foreground/70 text-xs">{label}</p>
+                  <p className="font-heading font-extrabold text-primary-foreground text-sm">{value}</p>
+                  <p className="text-primary-foreground/80 text-xs">{label}</p>
                 </div>
               </div>
             ))}
