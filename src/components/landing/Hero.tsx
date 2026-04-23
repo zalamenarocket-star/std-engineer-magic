@@ -35,7 +35,7 @@ const Hero = () => {
         height="1080"
         decoding="async"
       />
-      <div className="absolute inset-0 bg-white/70 dark:bg-[hsl(var(--navy-dark)/0.8)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/55 to-white/75 dark:from-[hsl(var(--navy-dark)/0.7)] dark:via-[hsl(var(--navy-dark)/0.8)] dark:to-[hsl(var(--navy-dark)/0.85)]" />
 
       <div className="container relative z-10 py-20 flex flex-col items-center text-center">
         <div className="max-w-2xl">
