@@ -47,7 +47,7 @@ const Hero = () => {
             <div className="h-px w-10 bg-primary" />
           </div>
 
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-foreground dark:text-primary-foreground leading-[1.1] mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary-foreground leading-[1.1] mb-6">
             {t(
               <>
                 Inspeção NR-13, Caldeiras, Vasos de Pressão, Tanques e Tubulações{" "}
