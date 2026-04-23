@@ -35,7 +35,7 @@ const Hero = () => {
         height="1080"
         decoding="async"
       />
-      <div className="absolute inset-0 bg-[hsl(var(--navy-dark)/0.8)]" />
+      <div className="absolute inset-0 bg-white/70 dark:bg-[hsl(var(--navy-dark)/0.8)]" />
 
       <div className="container relative z-10 py-20 flex flex-col items-center text-center">
         <div className="max-w-2xl">
@@ -47,7 +47,7 @@ const Hero = () => {
             <div className="h-px w-10 bg-primary" />
           </div>
 
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary-foreground leading-[1.1] mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-foreground dark:text-primary-foreground leading-[1.1] mb-6">
             {t(
               <>
                 Inspeção NR-13, Caldeiras, Vasos de Pressão, Tanques e Tubulações{" "}
@@ -59,7 +59,7 @@ const Hero = () => {
             )}
           </h1>
 
-          <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed max-w-xl mx-auto">
+          <p className="text-lg text-foreground/80 dark:text-primary-foreground/80 mb-8 leading-relaxed max-w-xl mx-auto">
             {t(
               "A STD Engenharia é referência em inspeção NR-13 de caldeiras, vasos de pressão, tubulações e tanques. Atuamos desde 1996 com engenheiros habilitados, garantindo conformidade com a NR-13 e segurança operacional em todo o Brasil e exterior.",
               "STD Engenharia is a reference in NR-13 inspection of boilers, pressure vessels, piping and tanks. Operating since 1996 with certified engineers, ensuring NR-13 compliance and operational safety throughout Brazil and abroad.",
@@ -105,8 +105,8 @@ const Hero = () => {
                   <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-heading font-extrabold text-primary-foreground text-sm">{value}</p>
-                  <p className="text-primary-foreground/70 text-xs">{label}</p>
+                  <p className="font-heading font-extrabold text-foreground dark:text-primary-foreground text-sm">{value}</p>
+                  <p className="text-foreground/70 dark:text-primary-foreground/70 text-xs">{label}</p>
                 </div>
               </div>
             ))}
@@ -114,7 +114,7 @@ const Hero = () => {
 
           {/* Client Logos */}
           <div>
-            <p className="text-primary-foreground/70 text-xs uppercase tracking-widest font-heading font-bold mb-4">
+            <p className="text-foreground/70 dark:text-primary-foreground/70 text-xs uppercase tracking-widest font-heading font-bold mb-4">
               {t(
                 "Algumas das centenas de empresas que confiam na STD",
                 "Some of the hundreds of companies that trust STD",
