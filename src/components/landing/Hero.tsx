@@ -59,7 +59,7 @@ const Hero = () => {
             )}
           </h1>
 
-          <p className="text-lg text-foreground/80 dark:text-primary-foreground/80 mb-8 leading-relaxed max-w-xl mx-auto">
+          <p className="text-lg text-primary-foreground/90 mb-8 leading-relaxed max-w-xl mx-auto">
             {t(
               "A STD Engenharia é referência em inspeção NR-13 de caldeiras, vasos de pressão, tubulações e tanques. Atuamos desde 1996 com engenheiros habilitados, garantindo conformidade com a NR-13 e segurança operacional em todo o Brasil e exterior.",
               "STD Engenharia is a reference in NR-13 inspection of boilers, pressure vessels, piping and tanks. Operating since 1996 with certified engineers, ensuring NR-13 compliance and operational safety throughout Brazil and abroad.",
