@@ -105,8 +105,8 @@ const Hero = () => {
                   <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-heading font-extrabold text-primary-foreground text-sm">{value}</p>
-                  <p className="text-primary-foreground/70 text-xs">{label}</p>
+                  <p className="font-heading font-extrabold text-foreground dark:text-primary-foreground text-sm">{value}</p>
+                  <p className="text-foreground/70 dark:text-primary-foreground/70 text-xs">{label}</p>
                 </div>
               </div>
             ))}
@@ -114,7 +114,7 @@ const Hero = () => {
 
           {/* Client Logos */}
           <div>
-            <p className="text-primary-foreground/70 text-xs uppercase tracking-widest font-heading font-bold mb-4">
+            <p className="text-foreground/70 dark:text-primary-foreground/70 text-xs uppercase tracking-widest font-heading font-bold mb-4">
               {t(
                 "Algumas das centenas de empresas que confiam na STD",
                 "Some of the hundreds of companies that trust STD",
