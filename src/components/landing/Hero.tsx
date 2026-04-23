@@ -114,7 +114,7 @@ const Hero = () => {
 
           {/* Client Logos */}
           <div>
-            <p className="text-foreground/70 dark:text-primary-foreground/70 text-xs uppercase tracking-widest font-heading font-bold mb-4">
+            <p className="text-primary-foreground/80 text-xs uppercase tracking-widest font-heading font-bold mb-4">
               {t(
                 "Algumas das centenas de empresas que confiam na STD",
                 "Some of the hundreds of companies that trust STD",
