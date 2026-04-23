@@ -6,11 +6,46 @@ const WhyChoose = () => {
   const { t } = useLanguage();
 
   const reasons = [
-    { icon: CheckCircle, title: t("Especialização em Inspeção NR-13", "NR-13 Inspection Expertise"), desc: t("Desde 1996, realizamos inspeção NR-13 em caldeiras, vasos de pressão e tubulações com 100% de aprovação.", "Since 1996, we perform NR-13 inspection of boilers, pressure vessels and piping with 100% approval rate.") },
-    { icon: Cpu, title: t("Tecnologia de Ponta", "Cutting-Edge Technology"), desc: t("Equipamentos e softwares de última geração para inspeções NR-13 precisas e confiáveis.", "State-of-the-art equipment and software for accurate and reliable NR-13 inspections.") },
-    { icon: FileText, title: t("Laudos e Prontuários Completos", "Complete Reports & Records"), desc: t("Emissão de laudos de inspeção NR-13, abertura de livro de registro e reconstituição de prontuários.", "Issuance of NR-13 inspection reports, registry book opening and record reconstitution.") },
-    { icon: Headphones, title: t("Suporte em Fiscalizações NR-13", "NR-13 Audit Support"), desc: t("Acompanhamento durante todo o processo de inspeção, inclusive em fiscalizações do MTE.", "Support throughout the entire inspection process, including MTE audits.") },
-    { icon: ShieldCheck, title: t("Conformidade com o MTE", "MTE Compliance"), desc: t("Garantimos que caldeiras, vasos de pressão e tubulações estão em conformidade com a NR-13.", "We ensure boilers, pressure vessels and piping are NR-13 compliant.") },
+    {
+      icon: CheckCircle,
+      title: t("Especialização em Inspeção NR-13", "NR-13 Inspection Expertise"),
+      desc: t(
+        "Desde 1996, realizamos inspeção NR-13 em caldeiras, inspeção vasos de pressão e tubulações com 100% de aprovação.",
+        "Since 1996, we perform NR-13 inspection of boilers, pressure vessels and piping with 100% approval rate.",
+      ),
+    },
+    {
+      icon: Cpu,
+      title: t("Tecnologia de Ponta", "Cutting-Edge Technology"),
+      desc: t(
+        "Equipamentos e softwares de última geração para inspeções NR-13 precisas e confiáveis.",
+        "State-of-the-art equipment and software for accurate and reliable NR-13 inspections.",
+      ),
+    },
+    {
+      icon: FileText,
+      title: t("Laudos e Prontuários Completos", "Complete Reports & Records"),
+      desc: t(
+        "Emissão de laudos de inspeção NR-13, abertura de livro de registro e reconstituição de prontuários.",
+        "Issuance of NR-13 inspection reports, registry book opening and record reconstitution.",
+      ),
+    },
+    {
+      icon: Headphones,
+      title: t("Suporte em Fiscalizações NR-13", "NR-13 Audit Support"),
+      desc: t(
+        "Acompanhamento durante todo o processo de inspeção, inclusive em fiscalizações do MTE.",
+        "Support throughout the entire inspection process, including MTE audits.",
+      ),
+    },
+    {
+      icon: ShieldCheck,
+      title: t("Conformidade com o MTE", "MTE Compliance"),
+      desc: t(
+        "Garantimos que caldeiras, vasos de pressão e tubulações estão em conformidade com a NR-13.",
+        "We ensure boilers, pressure vessels and piping are NR-13 compliant.",
+      ),
+    },
   ];
 
   return (
@@ -20,8 +55,12 @@ const WhyChoose = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mb-10">
               {t(
-                <>Por que escolher a{" "}<span className="text-gradient">STD Engenharia</span> para sua Inspeção NR-13?</>,
-                <>Why choose{" "}<span className="text-gradient">STD Engenharia</span> for your NR-13 Inspection?</>
+                <>
+                  Por que escolher a <span className="text-gradient">STD Engenharia</span> para sua Inspeção NR-13?
+                </>,
+                <>
+                  Why choose <span className="text-gradient">STD Engenharia</span> for your NR-13 Inspection?
+                </>,
               )}
             </h2>
             <div className="space-y-6">
@@ -40,7 +79,17 @@ const WhyChoose = () => {
           </div>
 
           <div className="relative">
-            <img src={inspectionImg} alt={t("Inspeção NR-13 em vaso de pressão realizada por engenheiro habilitado da STD Engenharia", "NR-13 pressure vessel inspection by certified STD Engenharia engineer")} className="rounded-2xl shadow-2xl w-full object-cover max-h-[500px]" loading="lazy" width="600" height="500" />
+            <img
+              src={inspectionImg}
+              alt={t(
+                "Inspeção NR-13 em vaso de pressão realizada por engenheiro habilitado da STD Engenharia",
+                "NR-13 pressure vessel inspection by certified STD Engenharia engineer",
+              )}
+              className="rounded-2xl shadow-2xl w-full object-cover max-h-[500px]"
+              loading="lazy"
+              width="600"
+              height="500"
+            />
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-xl px-6 py-4 shadow-glow">
               <p className="font-heading font-extrabold text-2xl">{t("Desde 1996", "Since 1996")}</p>
               <p className="text-sm font-medium opacity-90">{t("Referência em NR-13", "NR-13 Reference")}</p>
