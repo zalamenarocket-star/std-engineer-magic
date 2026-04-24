@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const whatsappLink =
-  "https://api.whatsapp.com/send?phone=5511916930415&text=Ol%C3%A1%2C%20vim%20do%20Google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es";
+  "https://wa.me/5511916930415?text=Ol%C3%A1%2C%20vim%20do%20Google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es";
 
 import logoRaizen from "@/assets/clients/raizen.png";
 import logoPetrobras from "@/assets/clients/petrobras.png";
