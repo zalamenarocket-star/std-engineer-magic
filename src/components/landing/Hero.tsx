@@ -37,7 +37,7 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-foreground/55 dark:bg-[hsl(var(--navy-dark)/0.8)]" />
 
-      <div className="container relative z-10 py-20 flex flex-col items-center text-center">
+      <div className="container relative z-10 py-20 flex flex-col items-center text-center opacity-100">
         <div className="max-w-2xl">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="h-px w-10 bg-primary" />
