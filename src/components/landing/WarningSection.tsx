@@ -31,7 +31,7 @@ const WarningSection = () => {
           </p>
 
           <a
-            href="https://api.whatsapp.com/send?phone=5511916930415&text=Olá! Gostaria de agendar uma inspeção NR-13 com a STD Engenharia."
+            href="https://api.whatsapp.com/send?phone=5511916930415&text=Ol%C3%A1%2C%20vim%20do%20Google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es"
             target="_blank"
             rel="noopener noreferrer"
           >
